@@ -1,0 +1,25 @@
+---
+// Hizmetler sayfası.  Her hizmet kartını detaylarıyla listeler.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { services } from '../../data/services.js';
+
+---
+<BaseLayout lang="tr" title="Hizmetler — Furkan Şenyüz" description="Planlama, hak talebi yönetimi, veri analitiği ve ihale hazırlığı alanlarında sunduğum danışmanlık hizmetleri." canonical="https://fsenyuz.com/tr/hizmetler" alternate="https://fsenyuz.com/en/services" alternateLang="en">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-5xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Hizmetler</h1>
+    <p class="text-body mb-l">Aşağıdaki alanlarda danışmanlık ve mentorluk hizmetleri sunuyorum. Daha fazla bilgi için iletişime geçebilirsiniz.</p>
+    <div class="grid gap-l md:grid-cols-2">
+      {services.map(service => (
+        <article id={service.slug} class="border rounded-lg p-l bg-light dark:bg-dark border-gray-200 dark:border-gray-700 shadow-sm">
+          <h2 class="text-h3 font-semibold text-primary mb-s">{service.tr.title}</h2>
+          <p class="text-body">{service.tr.description}</p>
+        </article>
+      ))}
+    </div>
+    <div class="mt-xl text-center">
+      <a href="mailto:furkansenyuz@gmail.com" class="bg-accent text-light py-s px-l rounded hover:bg-accent-light transition-colors">Danışmanlık Talep Et</a>
+    </div>
+  </section>
+</BaseLayout>

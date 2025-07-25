@@ -1,0 +1,23 @@
+---
+// Card component for a single service offered.  Accepts title,
+// description and slug for linking to details.
+---
+---
+export interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  lang: 'tr' | 'en';
+}
+
+const { title, description, slug, lang } = Astro.props;
+
+// Construct a link to the service details section (not implemented yet).
+const href = `/${lang}/${lang === 'tr' ? 'hizmetler' : 'services'}#${slug}`;
+
+---
+<div class="p-l border rounded-lg bg-light dark:bg-dark border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+  <h3 class="text-h3 font-semibold mb-s text-primary">{title}</h3>
+  <p class="text-body mb-m text-dark dark:text-light">{description}</p>
+  <a href={href} class="text-accent underline hover:text-accent-light">{lang === 'tr' ? 'Detaylar' : 'Learn more'}</a>
+</div>

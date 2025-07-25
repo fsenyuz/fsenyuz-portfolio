@@ -1,0 +1,57 @@
+---
+// English home page.  Mirrors the Turkish root but with English
+// content and navigation.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import HighlightCard from '../../components/HighlightCard.astro';
+import TimelineItem from '../../components/TimelineItem.astro';
+import { experiences } from '../../data/experiences.js';
+import { services } from '../../data/services.js';
+
+---
+<BaseLayout lang="en" title="Furkan Şenyüz — Project & Contract Management" description="Turkish engineer Furkan Şenyüz specialises in planning, cost control, FIDIC contract and claim management, and data analytics and automation." canonical="https://fsenyuz.com/en" alternate="https://fsenyuz.com/" alternateLang="tr">
+  <HeroSection
+    headline="Turning data into value through project and contract expertise."
+    subheadline="Delivering end‑to‑end solutions in planning & cost control, FIDIC contract and claim management, and data automation."
+    ctaPrimary={{ label: 'View Services', href: '/en/services' }}
+    ctaSecondary={{ label: 'Get in Touch', href: '/en/contact' }}
+    bg="/assets/hero.png"
+  />
+
+  <section class="py-2xl px-m bg-light dark:bg-dark">
+    <h2 class="text-h2 font-bold text-primary mb-l">What I Do</h2>
+    <div class="grid gap-l md:grid-cols-2 lg:grid-cols-2">
+      {services.map(service => (
+        <HighlightCard
+          title={service.en.title}
+          description={service.en.description}
+          href={`/en/services#${service.slug}`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="py-2xl px-m bg-light dark:bg-dark">
+    <h2 class="text-h2 font-bold text-primary mb-l">Experience Snapshot</h2>
+    <div class="border-l-2 border-accent pl-m">
+      {experiences.map(item => (
+        <TimelineItem
+          start={item.start}
+          end={item.end}
+          company={item.company}
+          role={item.role}
+          project={item.project}
+          description={item.en}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="py-2xl px-m bg-light dark:bg-dark text-center">
+    <h2 class="text-h2 font-bold text-primary mb-m">How can I help your projects?</h2>
+    <p class="text-body mb-l max-w-3xl mx-auto">Do you need support in planning, contract management or data analytics? Reach out to me via email or LinkedIn.</p>
+    <a href="mailto:furkansenyuz@gmail.com" class="bg-accent text-light py-s px-l rounded hover:bg-accent-light transition-colors">Get in touch</a>
+  </section>
+</BaseLayout>

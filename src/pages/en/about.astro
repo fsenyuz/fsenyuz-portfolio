@@ -1,0 +1,34 @@
+---
+// English About page.  Provides a long biography and career
+// timeline.  Mirrors the Turkish version with translated content.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TimelineItem from '../../components/TimelineItem.astro';
+import { experiences } from '../../data/experiences.js';
+
+---
+<BaseLayout lang="en" title="About — Furkan Şenyüz" description="The professional journey, expertise and story of Turkish engineer Furkan Şenyüz." canonical="https://fsenyuz.com/en/about" alternate="https://fsenyuz.com/tr/hakkimda" alternateLang="tr">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-4xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">About</h1>
+    <p class="text-body mb-l">
+      Furkan Şenyüz is a Turkish civil engineer and project management specialist. Since 2016 he has worked on international infrastructure projects focusing on planning, cost control, claim management and tender preparation. He currently serves as the technical office chief on Taşyapı’s Kuzmin–Sremska Rača highway project.
+    </p>
+    <p class="text-body mb-l">
+      Through positions at Limak, Fernas and Mat Yapı he has gained interdisciplinary perspective in claim and contract management. He has also prepared tender dossiers, BOQs and budgets for bids across Europe and Central Asia.
+    </p>
+    <h2 class="text-h3 font-bold text-primary mb-m">Career Timeline</h2>
+    <div class="border-l-2 border-accent pl-m">
+      {experiences.map(item => (
+        <TimelineItem
+          start={item.start}
+          end={item.end}
+          company={item.company}
+          role={item.role}
+          project={item.project}
+          description={item.en}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

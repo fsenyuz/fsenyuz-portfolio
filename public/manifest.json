@@ -1,0 +1,16 @@
+{
+  "name": "Furkan Şenyüz Portfolio",
+  "short_name": "fsenyuz",
+  "start_url": "/",
+  "background_color": "#F5F5F5",
+  "theme_color": "#0A56A9",
+  "display": "standalone",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/assets/hero.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

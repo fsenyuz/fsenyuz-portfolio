@@ -1,0 +1,69 @@
+---
+// Navigation component.  Accepts `lang` prop ('tr' or 'en') and
+// renders a language‑appropriate navigation bar.  Includes a
+// language switcher that links to the same path in the other
+// language.
+---
+---
+export interface Props {
+  lang: 'tr' | 'en';
+  currentPath?: string;
+}
+
+const { lang, currentPath } = Astro.props;
+
+const navItems = {
+  tr: [
+    { href: '/tr', label: 'Ana Sayfa' },
+    { href: '/tr/hakkimda', label: 'Hakkımda' },
+    { href: '/tr/deneyim', label: 'Deneyim' },
+    { href: '/tr/projeler', label: 'Projeler' },
+    { href: '/tr/sertifikalar', label: 'Sertifikalar' },
+    { href: '/tr/yetenekler', label: 'Yetenekler' },
+    { href: '/tr/hizmetler', label: 'Hizmetler' },
+    { href: '/tr/iletisim', label: 'İletişim' }
+  ],
+  en: [
+    { href: '/en', label: 'Home' },
+    { href: '/en/about', label: 'About' },
+    { href: '/en/experience', label: 'Experience' },
+    { href: '/en/projects', label: 'Projects' },
+    { href: '/en/certificates', label: 'Certificates' },
+    { href: '/en/skills', label: 'Skills' },
+    { href: '/en/services', label: 'Services' },
+    { href: '/en/contact', label: 'Contact' }
+  ]
+};
+
+// Determine the opposite language for the switcher
+const otherLang = lang === 'tr' ? 'en' : 'tr';
+
+// Derive the corresponding path in the other language by replacing
+// the current language prefix.  Fallback to root if currentPath is
+// undefined.  This assumes routes mirror each other (e.g. /tr/hakkimda
+// ↔ /en/about).
+function getOtherLangHref(path) {
+  if (!path) return otherLang === 'tr' ? '/tr' : '/en';
+  // Ensure path starts with `/tr` or `/en`; if not, just return base
+  const segments = path.split('/').filter(Boolean);
+  if (segments.length === 0) return otherLang === 'tr' ? '/tr' : '/en';
+  segments[0] = otherLang;
+  return '/' + segments.join('/');
+}
+
+const switchHref = getOtherLangHref(currentPath);
+
+---
+<nav class="flex items-center justify-between py-s px-m bg-light dark:bg-dark text-dark dark:text-light border-b border-gray-200 dark:border-gray-700">
+  <a href={lang === 'tr' ? '/tr' : '/en'} class="text-h2 font-bold text-primary">Furkan Şenyüz</a>
+  <ul class="flex gap-m">
+    {navItems[lang].map(item => (
+      <li><a href={item.href} class="hover:text-accent" aria-label={item.label}>{item.label}</a></li>
+    ))}
+    <li>
+      <a href={switchHref} class="ml-xl underline">
+        {otherLang.toUpperCase()}
+      </a>
+    </li>
+  </ul>
+</nav>

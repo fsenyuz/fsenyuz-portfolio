@@ -1,0 +1,23 @@
+---
+// Projeler sayfası.  Case study formatındaki projeleri listeler.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects.js';
+
+---
+<BaseLayout lang="tr" title="Projeler — Furkan Şenyüz" description="Furkan Şenyüz'ün planlama, sözleşme ve veri analitiği alanlarında yer aldığı projeler." canonical="https://fsenyuz.com/tr/projeler" alternate="https://fsenyuz.com/en/projects" alternateLang="en">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-5xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Projeler</h1>
+    <div class="flex flex-col gap-xl">
+      {projects.map(item => (
+        <article id={item.slug} class="border rounded-lg p-l bg-light dark:bg-dark border-gray-200 dark:border-gray-700 shadow-sm">
+          <h2 class="text-h3 font-semibold text-primary mb-s">{item.tr.title}</h2>
+          <p class="text-body mb-s"><strong>Problem:</strong> {item.tr.problem}</p>
+          <p class="text-body mb-s"><strong>Yaklaşım:</strong> {item.tr.approach}</p>
+          <p class="text-body"><strong>Sonuç:</strong> {item.tr.outcome}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

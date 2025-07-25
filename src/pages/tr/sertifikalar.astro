@@ -1,0 +1,21 @@
+---
+// Sertifikalar sayfası.  Tüm kurs ve sertifikaları listeler.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { certificates } from '../../data/certificates.js';
+
+---
+<BaseLayout lang="tr" title="Sertifikalar — Furkan Şenyüz" description="Furkan Şenyüz'ün tamamladığı profesyonel sertifikalar ve eğitimler." canonical="https://fsenyuz.com/tr/sertifikalar" alternate="https://fsenyuz.com/en/certificates" alternateLang="en">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-4xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Sertifikalar</h1>
+    <ul class="space-y-m">
+      {certificates.map(cert => (
+        <li class="border p-m rounded-lg bg-light dark:bg-dark border-gray-200 dark:border-gray-700">
+          <p class="text-body"><strong>{cert.year} — {cert.tr.name}</strong> ({cert.tr.provider})</p>
+          <p class="text-body text-gray-700 dark:text-gray-300">{cert.tr.note}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

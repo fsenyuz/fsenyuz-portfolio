@@ -1,0 +1,25 @@
+---
+// English skills page.  Lists technical skills, tools and languages.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { skills } from '../../data/skills.js';
+
+---
+<BaseLayout lang="en" title="Skills — Furkan Şenyüz" description="Technical skills and tool proficiencies of engineer Furkan Şenyüz." canonical="https://fsenyuz.com/en/skills" alternate="https://fsenyuz.com/tr/yetenekler" alternateLang="tr">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-4xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Skills</h1>
+    <h2 class="text-h3 font-semibold text-primary mb-s">Technical</h2>
+    <ul class="list-disc list-inside mb-l">
+      {skills.technical.en.map(item => <li class="text-body mb-s">{item}</li>)}
+    </ul>
+    <h2 class="text-h3 font-semibold text-primary mb-s">Tools</h2>
+    <ul class="list-disc list-inside mb-l">
+      {skills.tools.en.map(item => <li class="text-body mb-s">{item}</li>)}
+    </ul>
+    <h2 class="text-h3 font-semibold text-primary mb-s">Languages</h2>
+    <ul class="list-disc list-inside">
+      {skills.languages.en.map(item => <li class="text-body mb-s">{item}</li>)}
+    </ul>
+  </section>
+</BaseLayout>

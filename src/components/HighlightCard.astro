@@ -1,0 +1,20 @@
+---
+// Reusable card for highlight sections on the home page.  Each card
+// displays a title and description and optionally links to a more
+// detailed page.
+---
+---
+export interface Props {
+  title: string;
+  description: string;
+  href?: string;
+}
+
+const { title, description, href } = Astro.props;
+
+---
+<div class="p-l border rounded-lg bg-light dark:bg-dark border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
+  <h3 class="text-h3 font-semibold mb-s text-primary">{title}</h3>
+  <p class="text-body mb-m text-dark dark:text-light">{description}</p>
+  {href && <a href={href} class="text-accent underline hover:text-accent-light">Detaylar</a>}
+</div>

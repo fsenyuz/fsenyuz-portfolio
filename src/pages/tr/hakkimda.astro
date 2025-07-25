@@ -1,0 +1,41 @@
+---
+// Hakkımda sayfası.  Uzun biyografi, kariyer zaman çizelgesi ve
+// kişisel bilgi içerir.  Rakamsal metrikler kullanılmaz, Deneyim
+// Kanon Listesi ile uyumludur.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TimelineItem from '../../components/TimelineItem.astro';
+import { experiences } from '../../data/experiences.js';
+
+---
+<BaseLayout lang="tr" title="Hakkımda — Furkan Şenyüz" description="Furkan Şenyüz'ün profesyonel yolculuğu, deneyimleri ve değer önerisi." canonical="https://fsenyuz.com/tr/hakkimda" alternate="https://fsenyuz.com/en/about" alternateLang="en">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-4xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Hakkımda</h1>
+    <p class="text-body mb-l">
+      Furkan Şenyüz, Türk inşaat mühendisi ve proje yönetimi uzmanıdır. 2016’dan beri uluslararası altyapı
+      projelerinde planlama, maliyet kontrolü, hak talebi yönetimi ve ihale hazırlıkları üzerine çalışmaktadır.
+      Şu anda Taşyapı’nın Kuzmin–Sremska Rača Otoyolu projesinde teknik ofis şefi olarak görev yapmaktadır.
+      Kariyeri boyunca TILOS & Primavera P6, FIDIC sözleşmeleri, veri analitiği ve otomasyon konularında
+      derin uzmanlık geliştirmiştir.
+    </p>
+    <p class="text-body mb-l">
+      Limak, Fernas ve Mat Yapı gibi kurumlarda edindiği tecrübeler sayesinde hak talebi ve sözleşme
+      yönetiminde disiplinler arası bir bakış açısı kazandı.  Ayrıca tender preparation süreçlerinde uluslararası
+      ihale dokümanları, BOQ ve bütçe kontrolü gibi alanlarda çalıştı.
+    </p>
+    <h2 class="text-h3 font-bold text-primary mb-m">Kariyer Zaman Çizelgesi</h2>
+    <div class="border-l-2 border-accent pl-m">
+      {experiences.map(item => (
+        <TimelineItem
+          start={item.start}
+          end={item.end}
+          company={item.company}
+          role={item.role}
+          project={item.project}
+          description={item.tr}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

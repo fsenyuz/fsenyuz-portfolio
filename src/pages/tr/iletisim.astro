@@ -1,0 +1,17 @@
+---
+// İletişim sayfası.  E‑posta ve LinkedIn bağlantıları sunar.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+---
+<BaseLayout lang="tr" title="İletişim — Furkan Şenyüz" description="Projelerinizde nasıl yardımcı olabileceğimi öğrenmek için iletişim kurun." canonical="https://fsenyuz.com/tr/iletisim" alternate="https://fsenyuz.com/en/contact" alternateLang="en">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-3xl mx-auto text-center">
+    <h1 class="text-h2 font-bold text-primary mb-l">İletişim</h1>
+    <p class="text-body mb-l">Projelerinizde nasıl yardımcı olabileceğimi öğrenmek için e‑posta veya LinkedIn üzerinden iletişime geçin.</p>
+    <div class="flex flex-col items-center gap-m">
+      <a href="mailto:furkansenyuz@gmail.com" class="bg-accent text-light py-s px-l rounded hover:bg-accent-light transition-colors">E‑posta Gönder</a>
+      <a href="https://www.linkedin.com/in/fsenyuz/" class="text-accent underline hover:text-accent-light" target="_blank" rel="noopener">LinkedIn Profili</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+// English services page.  Lists consulting offerings in English.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { services } from '../../data/services.js';
+
+---
+<BaseLayout lang="en" title="Services — Furkan Şenyüz" description="Consulting services offered by Furkan Şenyüz in planning & cost control, FIDIC claim management, data analytics and tendering." canonical="https://fsenyuz.com/en/services" alternate="https://fsenyuz.com/tr/hizmetler" alternateLang="tr">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-5xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Services</h1>
+    <p class="text-body mb-l">I offer consulting and mentoring services in the following areas. Feel free to reach out for more information.</p>
+    <div class="grid gap-l md:grid-cols-2">
+      {services.map(service => (
+        <article id={service.slug} class="border rounded-lg p-l bg-light dark:bg-dark border-gray-200 dark:border-gray-700 shadow-sm">
+          <h2 class="text-h3 font-semibold text-primary mb-s">{service.en.title}</h2>
+          <p class="text-body">{service.en.description}</p>
+        </article>
+      ))}
+    </div>
+    <div class="mt-xl text-center">
+      <a href="mailto:furkansenyuz@gmail.com" class="bg-accent text-light py-s px-l rounded hover:bg-accent-light transition-colors">Request Consultation</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+// Yetenekler sayfası.  Teknik beceriler, kullanılan araçlar ve
+// konuşulan dilleri listeler.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { skills } from '../../data/skills.js';
+
+---
+<BaseLayout lang="tr" title="Yetenekler — Furkan Şenyüz" description="Furkan Şenyüz'ün teknik beceri ve araç yetenekleri." canonical="https://fsenyuz.com/tr/yetenekler" alternate="https://fsenyuz.com/en/skills" alternateLang="en">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-4xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Yetenekler</h1>
+    <h2 class="text-h3 font-semibold text-primary mb-s">Teknik</h2>
+    <ul class="list-disc list-inside mb-l">
+      {skills.technical.tr.map(item => <li class="text-body mb-s">{item}</li>)}
+    </ul>
+    <h2 class="text-h3 font-semibold text-primary mb-s">Araçlar</h2>
+    <ul class="list-disc list-inside mb-l">
+      {skills.tools.tr.map(item => <li class="text-body mb-s">{item}</li>)}
+    </ul>
+    <h2 class="text-h3 font-semibold text-primary mb-s">Diller</h2>
+    <ul class="list-disc list-inside">
+      {skills.languages.tr.map(item => <li class="text-body mb-s">{item}</li>)}
+    </ul>
+  </section>
+</BaseLayout>

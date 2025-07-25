@@ -1,0 +1,37 @@
+---
+// Footer component.  Shows copyright, simple links and social
+// connections.  Accepts a `lang` prop for translation.
+---
+---
+export interface Props {
+  lang: 'tr' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const strings = {
+  tr: {
+    privacy: 'Gizlilik Politikası',
+    terms: 'Kullanım Şartları',
+    sitemap: 'Site Haritası',
+    copyright: 'Telif hakkı © ' + new Date().getFullYear() + ' Furkan Şenyüz. Tüm hakları saklıdır.'
+  },
+  en: {
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Use',
+    sitemap: 'Sitemap',
+    copyright: 'Copyright © ' + new Date().getFullYear() + ' Furkan Şenyüz. All rights reserved.'
+  }
+};
+
+---
+<footer class="mt-xl py-m px-m bg-light dark:bg-dark text-sm text-dark dark:text-light border-t border-gray-200 dark:border-gray-700">
+  <div class="flex flex-col md:flex-row md:justify-between gap-s">
+    <p>{strings[lang].copyright}</p>
+    <ul class="flex gap-m">
+      <li><a href={lang === 'tr' ? '/tr/gizlilik' : '/en/privacy'} class="hover:text-accent">{strings[lang].privacy}</a></li>
+      <li><a href={lang === 'tr' ? '/tr/kullanim-sartlari' : '/en/terms'} class="hover:text-accent">{strings[lang].terms}</a></li>
+      <li><a href={lang === 'tr' ? '/tr/site-haritasi' : '/en/sitemap'} class="hover:text-accent">{strings[lang].sitemap}</a></li>
+    </ul>
+  </div>
+</footer>

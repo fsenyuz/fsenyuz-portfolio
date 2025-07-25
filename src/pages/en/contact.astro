@@ -1,0 +1,17 @@
+---
+// English contact page.  Provides email and LinkedIn links.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+---
+<BaseLayout lang="en" title="Contact — Furkan Şenyüz" description="Get in touch with engineer Furkan Şenyüz to discuss your project needs." canonical="https://fsenyuz.com/en/contact" alternate="https://fsenyuz.com/tr/iletisim" alternateLang="tr">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-3xl mx-auto text-center">
+    <h1 class="text-h2 font-bold text-primary mb-l">Contact</h1>
+    <p class="text-body mb-l">Get in touch via email or LinkedIn to discuss how I can support your projects.</p>
+    <div class="flex flex-col items-center gap-m">
+      <a href="mailto:furkansenyuz@gmail.com" class="bg-accent text-light py-s px-l rounded hover:bg-accent-light transition-colors">Send an Email</a>
+      <a href="https://www.linkedin.com/in/fsenyuz/" class="text-accent underline hover:text-accent-light" target="_blank" rel="noopener">LinkedIn Profile</a>
+    </div>
+  </section>
+</BaseLayout>

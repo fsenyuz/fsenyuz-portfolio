@@ -1,0 +1,23 @@
+---
+// English projects page.  Lists case studies in English.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects.js';
+
+---
+<BaseLayout lang="en" title="Projects — Furkan Şenyüz" description="Projects undertaken by Furkan Şenyüz in planning, contract management and data analytics." canonical="https://fsenyuz.com/en/projects" alternate="https://fsenyuz.com/tr/projeler" alternateLang="tr">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-5xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Projects</h1>
+    <div class="flex flex-col gap-xl">
+      {projects.map(item => (
+        <article id={item.slug} class="border rounded-lg p-l bg-light dark:bg-dark border-gray-200 dark:border-gray-700 shadow-sm">
+          <h2 class="text-h3 font-semibold text-primary mb-s">{item.en.title}</h2>
+          <p class="text-body mb-s"><strong>Problem:</strong> {item.en.problem}</p>
+          <p class="text-body mb-s"><strong>Approach:</strong> {item.en.approach}</p>
+          <p class="text-body"><strong>Outcome:</strong> {item.en.outcome}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+// Default 404 page.  Astro automatically serves this file when a
+// non‑existent route is requested.  Offers links back to home in
+// both languages.
+---
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+---
+<BaseLayout lang="tr" title="Sayfa Bulunamadı" description="Aradığınız sayfa bulunamadı." canonical="https://fsenyuz.com/404">
+  <section class="py-2xl px-m bg-light dark:bg-dark text-center">
+    <h1 class="text-h1 font-bold text-primary mb-m">404</h1>
+    <p class="text-body mb-l">Aradığınız sayfayı bulamadık. Lütfen menüden bir sayfa seçin.</p>
+    <div class="flex justify-center gap-m">
+      <a href="/tr" class="bg-accent text-light py-s px-l rounded hover:bg-accent-light transition-colors">Ana Sayfa</a>
+      <a href="/en" class="border border-accent text-accent py-s px-l rounded hover:bg-accent hover:text-light transition-colors">Home (EN)</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+// Turkish home page.  This page serves as the root of the site and
+// mirrors the `/tr` path.  It features a hero section, highlight
+// service cards and a timeline summary of experience.
+---
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import HighlightCard from '../components/HighlightCard.astro';
+import TimelineItem from '../components/TimelineItem.astro';
+import { experiences } from '../data/experiences.js';
+import { services } from '../data/services.js';
+
+---
+<BaseLayout lang="tr" title="Furkan Şenyüz — Proje ve Sözleşme Yönetimi" description="Planlama, maliyet kontrolü, FIDIC sözleşme ve hak talebi yönetimi ile veri analitiği ve otomasyon alanlarında uzman Türk mühendis Furkan Şenyüz." canonical="https://fsenyuz.com/" alternate="https://fsenyuz.com/en" alternateLang="en">
+  <HeroSection
+    headline="Proje yönetimi ve sözleşme uzmanlığı ile veriyi değer kazandırıyorum."
+    subheadline="Planlama & maliyet kontrol, FIDIC sözleşme ve hak talebi yönetimi ile veri analitiği ve otomasyon alanlarında uçtan uca çözümler sunarım."
+    ctaPrimary={{ label: 'Hizmetlerimi İncele', href: '/tr/hizmetler' }}
+    ctaSecondary={{ label: 'İletişime Geç', href: '/tr/iletisim' }}
+    bg="/assets/hero.png"
+  />
+
+  <section class="py-2xl px-m bg-light dark:bg-dark">
+    <h2 class="text-h2 font-bold text-primary mb-l">Ne Yapıyorum</h2>
+    <div class="grid gap-l md:grid-cols-2 lg:grid-cols-2">
+      {services.map(service => (
+        <HighlightCard
+          title={service.tr.title}
+          description={service.tr.description}
+          href={`/tr/hizmetler#${service.slug}`}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="py-2xl px-m bg-light dark:bg-dark">
+    <h2 class="text-h2 font-bold text-primary mb-l">Deneyim Özeti</h2>
+    <div class="border-l-2 border-accent pl-m">
+      {experiences.map(item => (
+        <TimelineItem
+          start={item.start}
+          end={item.end}
+          company={item.company}
+          role={item.role}
+          project={item.project}
+          description={item.tr}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="py-2xl px-m bg-light dark:bg-dark text-center">
+    <h2 class="text-h2 font-bold text-primary mb-m">Projelerinizde nasıl yardımcı olabilirim?</h2>
+    <p class="text-body mb-l max-w-3xl mx-auto">Planlama, sözleşme yönetimi veya veri analitiği konusunda desteğe mi ihtiyacınız var? Bana e‑posta veya LinkedIn üzerinden ulaşabilirsiniz.</p>
+    <a href="mailto:furkansenyuz@gmail.com" class="bg-accent text-light py-s px-l rounded hover:bg-accent-light transition-colors">İletişime geç</a>
+  </section>
+</BaseLayout>

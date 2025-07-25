@@ -1,0 +1,27 @@
+---
+// Component to display a single experience in the timeline.  The
+// component accepts start/end dates, company, role, project and
+// description in the current language.
+---
+---
+export interface Props {
+  start: string;
+  end: string;
+  company: string;
+  role: string;
+  project: string;
+  description: string;
+}
+
+const { start, end, company, role, project, description } = Astro.props;
+
+---
+<div class="relative pl-l mb-xl">
+  <div class="absolute left-0 top-0 w-3 h-3 bg-accent rounded-full"></div>
+  <div class="ml-m">
+    <h4 class="text-h3 font-semibold text-primary">{role} — {company}</h4>
+    <p class="text-small text-gray-600 dark:text-gray-400 mb-s">{start} – {end}</p>
+    <p class="text-body mb-s font-medium">{project}</p>
+    <p class="text-body text-dark dark:text-light">{description}</p>
+  </div>
+</div>

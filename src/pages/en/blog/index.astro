@@ -1,0 +1,36 @@
+---
+// English blog landing page.  Lists posts and categories in English.
+---
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { categories, posts } from '../../../data/blog.js';
+
+const lang = 'en';
+const published = posts.filter(p => p.language === lang && !p.draft);
+
+---
+<BaseLayout lang={lang} title="Blog — Furkan Şenyüz" description="Articles on FIDIC & contract management, planning & cost control, data & automation, and geotechnical topics." canonical="https://fsenyuz.com/en/blog" alternate="https://fsenyuz.com/tr/blog" alternateLang="tr">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-5xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Blog</h1>
+    <p class="text-body mb-l">Articles on FIDIC & contract management, planning & cost control, data & automation and geotechnical topics.</p>
+    <div class="grid gap-m md:grid-cols-2">
+      {categories.map(cat => (
+        <a href={`#${cat.id}`} class="block p-m border rounded-lg bg-light dark:bg-dark border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+          <h2 class="text-h3 font-semibold text-primary">{cat.en}</h2>
+        </a>
+      ))}
+    </div>
+    <hr class="my-xl" />
+    <div class="flex flex-col gap-xl">
+      {published.map(post => (
+        <article id={post.category} class="border rounded-lg p-l bg-light dark:bg-dark border-gray-200 dark:border-gray-700 shadow-sm">
+          <h2 class="text-h3 font-semibold text-primary mb-s">
+            <a href={`/en/blog/${post.slug}`}>{post.title}</a>
+          </h2>
+          <p class="text-small text-gray-600 dark:text-gray-400 mb-s">{new Date(post.date).toLocaleDateString('en-US')}</p>
+          <p class="text-body">{post.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

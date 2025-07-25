@@ -1,0 +1,27 @@
+---
+// Deneyim sayfası.  Ayrıntılı kariyer deneyimleri listelenir.
+---
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TimelineItem from '../../components/TimelineItem.astro';
+import { experiences } from '../../data/experiences.js';
+
+---
+<BaseLayout lang="tr" title="Deneyim — Furkan Şenyüz" description="Furkan Şenyüz'ün proje ve sözleşme yönetimindeki kariyer deneyimleri." canonical="https://fsenyuz.com/tr/deneyim" alternate="https://fsenyuz.com/en/experience" alternateLang="en">
+  <section class="py-2xl px-m bg-light dark:bg-dark max-w-5xl mx-auto">
+    <h1 class="text-h2 font-bold text-primary mb-l">Deneyim</h1>
+    <p class="text-body mb-l">Aşağıda, proje ve sözleşme yönetimi alanında edindiğim önemli iş deneyimlerimin bir özeti bulunmaktadır.</p>
+    <div class="border-l-2 border-accent pl-m">
+      {experiences.map(item => (
+        <TimelineItem
+          start={item.start}
+          end={item.end}
+          company={item.company}
+          role={item.role}
+          project={item.project}
+          description={item.tr}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
