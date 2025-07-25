@@ -1,0 +1,27 @@
+name: Extract Tarball with Permissions
+permissions:
+  contents: write
+on:
+  push:
+    paths:
+      - fsenyuz_portfolio.tar.gz
+      - .github/workflows/extract_with_permissions.yml
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      - name: Extract tarball
+        run: |
+          tar -xzf fsenyuz_portfolio.tar.gz
+          rm fsenyuz_portfolio.tar.gz
+      - name: Commit extracted files
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m 'Extract portfolio project files' || echo "No changes"
+          git push
